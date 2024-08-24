@@ -1,0 +1,83 @@
+﻿@page "/"
+@using ERP_StudentManagement.StudentManagementComponents
+@rendermode InteractiveServer
+
+@inject NavigationManager NavigationManager
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+@using System.Timers
+
+
+
+<div class="home">
+    <div class="students-list">
+        
+        <ListOfStudentsHome/>
+    </div>
+
+    <div class="right-column">
+        <MudCarousel Class="mud-width-full mb-5" Style="height:200px;" AutoCycle="@autocycle" TData="object">
+            <MudCarouselItem Transition="transition" Color="@Color.Primary">
+                <div class="d-flex position-relative" style="height:100%; width:100%;">
+                    <img src="https://docs.fohss.lk/storage/0dbd61057a19f1d42453a7ecc60d299c/0dbd61057a19f1d42453a7ecc60d299c/207c48c4885718c049c55e6ea58a0441.jpg" alt="Image 1" style="object-fit:cover; width:100%; height:100%;" />
+                </div>
+            </MudCarouselItem>
+            <MudCarouselItem Transition="transition" Color="@Color.Secondary">
+                <div class="d-flex" style="height:100%; width:100%;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZjo92OcdaC1p1Dk3wlYMPpC3G9aGow4ofDmUsxDvBDsTMStpPU7IrpSMvC7rHhcdnxmM&usqp=CAU" alt="Image 1" style="object-fit:cover; width:100%; height:100%;" />
+                </div>
+            </MudCarouselItem>
+            <MudCarouselItem Transition="transition">
+                <div class="d-flex" style="height:100%; width:100%;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj4aRb3L0WiXE9y9AbOW1HU33lGPQlshGx-g&s" alt="Image 1" style="object-fit:cover; width:100%; height:100%;" />
+                </div>
+            </MudCarouselItem>
+        </MudCarousel>
+        <MudDatePicker Class="mb-5" PickerVariant="PickerVariant.Static" Rounded="true" Elevation="12" Date="DateTime.Today" />
+    </div>
+</div>
+
+<style>
+    .home {
+        display: flex;
+        gap: 20px; /* Add some space between the items */
+    }
+
+        .home .students-list {
+            flex: 1; /* Take up available space */
+        }
+
+        .home .calendar {
+            flex: 0 0 300px; /* Fixed width for the calendar */
+            max-width: 300px; /* Ensure it doesn't grow too large */
+        }
+
+    /* Additional styles for the student list and calendar */
+    .students-list {
+        background-color: #f9f9f9; /* Light background */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow-y: auto; /* Enable scrolling if content overflows */
+    }
+
+    .calendar {
+        background-color: #ffffff; /* White background */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Make sure the calendar fits nicely */
+    .mud-picker-static {
+        width: 100%;
+    }
+</style>
+
+        
+@code{
+
+
+    private bool autocycle = true;
+    private Transition transition = Transition.Slide;
+        }
